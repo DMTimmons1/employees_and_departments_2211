@@ -19,13 +19,17 @@ RSpec.describe Department do
   
 
   describe "#hire" do
-  
     it "adds employees to our employees array" do
-    
       customer_service.hire(bobbi)
       customer_service.hire(aaron)
 
       expect(customer_service.employees).to eq([bobbi, aaron])
+    end
+  end
+
+  describe "#expense" do
+    it "starts out with zero expenses" do
+      expect(customer_service.expenses).to eq(0)
     end
   end
 end
