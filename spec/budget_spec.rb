@@ -3,10 +3,12 @@ require './lib/department'
 require './lib/employee'
 
 RSpec.describe Budget do
-  let(:yearly_budget) { Budget.new(2023)}
+  let(:yearly_budget) { Budget.new(2023) }
   let(:customer_service) { Department.new("Customer Service") }
   let(:sales) { Department.new("Sales") }
   let(:human_resources) { Department.new("Sales") }
+  let(:bobbi) { Employee.new ( { name: "Bobbi Jaeger", age: "30", salary: "$100000" } ) }
+  let(:aaron) { Employee.new ( { name: "Aaron Tanaka", age: "25", salary: "90000" } ) }  
   
   describe "#initialize" do
     it "exists" do
@@ -41,6 +43,18 @@ RSpec.describe Budget do
       human_resources.expense(100)
 
       expect(yearly_budget.low_expense_departments).to eq([customer_service, human_resources])
+    end
+  end
+
+  describe "#list_salaries" do
+    it "can list all of the employees' salaries" do
+      yearly_budget.add_department(customer_service)
+      
+      customer_service.hire(bobbi)
+      customer_service.hire(aaron)
+
+      # require 'pry'; binding.pry
+      expect(yearly_budget.list_salaries).to eq([100000, 90000])
     end
   end
 end
