@@ -53,8 +53,8 @@ RSpec.describe Budget do
       customer_service.hire(bobbi)
       customer_service.hire(aaron)
 
-      # require 'pry'; binding.pry
-      expect(yearly_budget.list_salaries).to eq([100000, 90000])
+      # expect(yearly_budget.list_salaries).to eq([100000, 90000])
+      expect(yearly_budget.list_salaries).to eq({ bobbi.name => bobbi.salary, aaron.name => aaron.salary })
     end
   end
 end
