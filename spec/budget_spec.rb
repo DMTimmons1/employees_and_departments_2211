@@ -20,5 +20,11 @@ RSpec.describe Budget do
     it "starts out with no departments" do
       expect(yearly_budget.departments).to eq([])
     end
+
+    it "can add departments to the yearly budget" do 
+      yearly_budget.add_department(customer_service)
+
+      expect(yearly_budget.departments).to eq([customer_service])
+    end
   end
 end
